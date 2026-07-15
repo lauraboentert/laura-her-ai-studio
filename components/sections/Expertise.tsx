@@ -18,8 +18,8 @@ type ExpertiseItem = SiteDict["expertise"][number];
 function ExpertisePanel({ item }: { item: ExpertiseItem }) {
   return (
     <div
-      className="dark-glass w-full p-6 md:p-11 flex flex-col"
-      style={{ maxWidth: "720px", borderRadius: "28px" }}
+      className="dark-glass w-full p-5 sm:p-6 md:p-11 flex flex-col"
+      style={{ maxWidth: "720px", borderRadius: "24px" }}
     >
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/50 mb-5">
         {item.number} — {item.title}
@@ -169,9 +169,9 @@ export function Expertise({ items, section }: Props) {
       </div>
 
       <div className="md:sticky md:top-0 md:h-svh flex flex-col overflow-hidden">
-        <div className="h-20 shrink-0" />
+        <div className="h-10 md:h-20 shrink-0" />
 
-        <div className="flex-1 flex flex-col lg:flex-row gap-10 lg:gap-16 mx-auto w-full max-w-[1280px] px-4 sm:px-8 py-8 min-h-0">
+        <div className="flex-1 flex flex-col lg:flex-row gap-10 lg:gap-16 mx-auto w-full max-w-[1280px] px-5 sm:px-8 py-5 md:py-8 min-h-0">
 
           <motion.div
             style={{ y: leftY }}

@@ -11,7 +11,7 @@ interface Props {
 export function About({ dict }: Props) {
   return (
     <SectionShell id="about" theme="soft-about" className="py-16 md:py-40">
-      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Portrait */}
@@ -41,8 +41,8 @@ export function About({ dict }: Props) {
                   alt={dict.altText}
                   width={400}
                   height={500}
-                  className="rounded-[28px] object-cover w-full"
-                  style={{ maxHeight: "58vh", objectPosition: "center top" }}
+                  className="rounded-[28px] object-cover w-full max-h-[44vh] sm:max-h-[58vh]"
+                  style={{ objectPosition: "center top" }}
                 />
               </div>
             </div>

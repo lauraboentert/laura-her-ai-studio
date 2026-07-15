@@ -10,7 +10,7 @@ interface Props {
 export function FounderDNA({ dict }: Props) {
   return (
     <SectionShell theme="blush-personal" className="py-16 md:py-40">
-      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start">
           {/* Left */}
           <div>
@@ -36,11 +36,11 @@ export function FounderDNA({ dict }: Props) {
           {/* Right: principles */}
           <div className="pt-0 lg:pt-14">
             <Reveal delay={0.08}>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-soft mb-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-soft mb-5 md:mb-8">
                 {dict.approachLabel}
               </p>
             </Reveal>
-            <ol className="flex flex-col gap-8">
+            <ol className="flex flex-col gap-5 md:gap-8">
               {dict.principles.map((principle, i) => (
                 <Reveal key={principle} delay={0.14 + i * 0.08}>
                   <li className="flex items-start gap-5">
@@ -54,7 +54,7 @@ export function FounderDNA({ dict }: Props) {
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="text-xl font-medium text-ink leading-snug pt-1">
+                    <p className="text-base sm:text-xl font-medium text-ink leading-snug pt-1">
                       {principle}
                     </p>
                   </li>

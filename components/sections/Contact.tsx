@@ -22,7 +22,7 @@ export function Contact({ dict }: Props) {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-4 sm:px-8 text-center">
+      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 sm:px-8 text-center">
         <Reveal>
           <SectionLabel className="mb-6 inline-block">{dict.label}</SectionLabel>
         </Reveal>

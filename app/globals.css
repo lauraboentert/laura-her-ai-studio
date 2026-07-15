@@ -254,12 +254,12 @@ section[id] {
 /* Mobile section headings — overrides per-component inline font-size */
 @media (max-width: 639px) {
   .h2-section {
-    font-size: clamp(2.4rem, 10vw, 3.6rem) !important;
-    line-height: 1 !important;
+    font-size: clamp(2rem, 8.5vw, 3.6rem) !important;
+    line-height: 1.05 !important;
     letter-spacing: -0.04em !important;
   }
   .body-lg {
-    font-size: 1.0625rem !important;
+    font-size: 1rem !important;
     line-height: 1.6 !important;
   }
 }

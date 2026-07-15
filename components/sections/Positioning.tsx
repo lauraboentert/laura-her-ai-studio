@@ -10,7 +10,7 @@ interface Props {
 export function Positioning({ dict }: Props) {
   return (
     <SectionShell theme="peach-intro" className="py-16 md:py-40">
-      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <Reveal>
           <SectionLabel className="mb-5">{dict.label}</SectionLabel>
         </Reveal>
@@ -27,7 +27,7 @@ export function Positioning({ dict }: Props) {
         </Reveal>
 
         <Reveal delay={0.18}>
-          <p className="body-lg max-w-2xl text-lg leading-[1.65] text-ink-soft mb-16">
+          <p className="body-lg max-w-2xl text-lg leading-[1.65] text-ink-soft mb-8 md:mb-16">
             {dict.description}
           </p>
         </Reveal>
@@ -35,7 +35,7 @@ export function Positioning({ dict }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {dict.sides.map((side, i) => (
             <Reveal key={side.title} delay={0.12 + i * 0.1}>
-              <div className="dark-glass card-hover h-full p-8 md:p-9 flex flex-col gap-6">
+              <div className="dark-glass card-hover h-full p-5 sm:p-8 md:p-9 flex flex-col gap-5 md:gap-6">
                 <div className="flex items-center gap-3">
                   <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/50">
                     {i === 0 ? "01" : "02"}
@@ -43,7 +43,7 @@ export function Positioning({ dict }: Props) {
                   <div className="h-px flex-1 bg-ink/10" />
                 </div>
 
-                <h3 className="text-2xl font-semibold text-ink">{side.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-ink">{side.title}</h3>
 
                 <ul className="flex flex-col gap-3">
                   {side.items.map((item) => (

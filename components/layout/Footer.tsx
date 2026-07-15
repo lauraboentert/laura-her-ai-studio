@@ -10,7 +10,7 @@ interface Props {
 export function Footer({ locale, dict }: Props) {
   return (
     <footer className="border-t border-ink/10 bg-canvas py-12">
-      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-sm font-semibold text-ink">
