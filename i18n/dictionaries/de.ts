@@ -23,7 +23,7 @@ const de: SiteDict = {
     descriptionMobile:
       '„Ich entwickle AI-gestützte Systeme für Digital Marketing, Automatisierung und Commerce – effizient, skalierbar und praxisnah."',
     primaryCta: { label: "Expertise entdecken", href: "#expertise" },
-    secondaryCta: { label: "Lebenslauf herunterladen", href: "/CV_Laura-Boentert.pdf" },
+    secondaryCta: { label: "CV herunterladen", href: "/CV_Laura-Boentert.pdf" },
     tags: ["AI Digital Marketing", "Workflow-Automatisierung", "AI Commerce", "GTM & Führung"],
     note: "München · International tätig",
     scrollLabel: "Weiter zu Expertise",

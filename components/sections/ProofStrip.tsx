@@ -9,10 +9,10 @@ interface Props {
 
 export function ProofStrip({ items, label }: Props) {
   return (
-    <SectionShell theme="butter-proof" className="py-20 md:py-28">
+    <SectionShell theme="butter-proof" className="py-12 md:py-28">
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
         <Reveal>
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-soft mb-12">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-soft mb-8 md:mb-12">
             {label}
           </p>
         </Reveal>

@@ -32,11 +32,11 @@ function ExpertisePanel({ item }: { item: ExpertiseItem }) {
         {item.headline}
       </h3>
 
-      <p className="text-base leading-[1.65] text-ink-soft mb-10">
+      <p className="text-base leading-[1.65] text-ink-soft mb-6 md:mb-10">
         {item.description}
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-9">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 mb-5 md:mb-9">
         {item.deliverables.map((d, idx) => (
           <div key={d} className="flex items-start gap-3 text-sm text-ink-soft">
             <span className="shrink-0 tabular-nums font-medium text-[11px] text-ink/30 mt-[3px] w-5">

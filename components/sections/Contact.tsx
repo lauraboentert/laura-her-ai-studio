@@ -10,7 +10,7 @@ interface Props {
 
 export function Contact({ dict }: Props) {
   return (
-    <section id="contact" className="section-shell relative py-28 md:py-48 overflow-hidden">
+    <section id="contact" className="section-shell relative py-16 md:py-48 overflow-hidden">
       <BackgroundVideo src="/videos/hero-glass.mp4" />
 
       <div
@@ -45,10 +45,10 @@ export function Contact({ dict }: Props) {
         </Reveal>
 
         <Reveal delay={0.26}>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 items-stretch sm:items-center sm:justify-center">
             <a
               href={dict.primaryCta.href}
-              className="group inline-flex min-h-[52px] items-center gap-2.5 rounded-full bg-ink px-8 py-3.5 text-base font-medium text-white transition-all duration-200 hover:bg-ink/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="group inline-flex min-h-[44px] sm:min-h-[52px] items-center justify-center gap-2.5 rounded-full bg-ink px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-white transition-all duration-200 hover:bg-ink/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               <Mail className="size-4" aria-hidden="true" />
               {dict.primaryCta.label}
@@ -57,7 +57,7 @@ export function Contact({ dict }: Props) {
               href={dict.secondaryCta.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex min-h-[52px] items-center gap-2.5 rounded-full px-8 py-3.5 text-base font-medium text-ink transition-all duration-200 hover:bg-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="group inline-flex min-h-[44px] sm:min-h-[52px] items-center justify-center gap-2.5 rounded-full px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-ink transition-all duration-200 hover:bg-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
               style={{
                 background: "rgba(255,255,255,0.52)",
                 border: "1px solid rgba(255,255,255,0.68)",
@@ -73,7 +73,7 @@ export function Contact({ dict }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={dict.substackCta.ariaLabel}
-              className="group inline-flex min-h-[52px] items-center gap-2.5 rounded-full px-8 py-3.5 text-base font-medium text-ink transition-all duration-200 hover:bg-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="group inline-flex min-h-[44px] sm:min-h-[52px] items-center justify-center gap-2.5 rounded-full px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-ink transition-all duration-200 hover:bg-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
               style={{
                 background: "rgba(255,255,255,0.52)",
                 border: "1px solid rgba(255,255,255,0.68)",

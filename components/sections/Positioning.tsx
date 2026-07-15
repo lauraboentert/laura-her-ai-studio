@@ -9,7 +9,7 @@ interface Props {
 
 export function Positioning({ dict }: Props) {
   return (
-    <SectionShell theme="peach-intro" className="py-28 md:py-40">
+    <SectionShell theme="peach-intro" className="py-16 md:py-40">
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
         <Reveal>
           <SectionLabel className="mb-5">{dict.label}</SectionLabel>

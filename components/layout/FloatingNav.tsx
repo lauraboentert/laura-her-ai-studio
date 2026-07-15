@@ -41,10 +41,10 @@ export function FloatingNav({
 
   return (
     <>
-      <header className="fixed top-5 left-1/2 z-50 w-[calc(100%-32px)] max-w-5xl -translate-x-1/2 transition-all duration-300">
+      <header className="fixed top-3 sm:top-5 left-1/2 z-50 w-[calc(100%-32px)] max-w-5xl -translate-x-1/2 transition-all duration-300">
         <nav
           className={cn(
-            "flex items-center justify-between rounded-full px-5 py-3 transition-all duration-300",
+            "flex items-center justify-between rounded-full px-4 sm:px-5 py-2 sm:py-3 transition-all duration-300",
             scrolled
               ? "glass-card shadow-[0_8px_32px_rgba(65,43,49,0.14)]"
               : "bg-white/20 backdrop-blur-sm border border-white/30"

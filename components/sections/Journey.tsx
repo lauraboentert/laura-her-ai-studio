@@ -13,14 +13,14 @@ interface Props {
 
 export function Journey({ entries, section }: Props) {
   return (
-    <section id="journey" className="section-shell theme-timeline py-28 md:py-40">
+    <section id="journey" className="section-shell theme-timeline py-16 md:py-40">
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
         <Reveal>
           <SectionLabel className="mb-5">{section.label}</SectionLabel>
         </Reveal>
         <Reveal delay={0.1}>
           <h2
-            className="font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-2xl mb-16"
+            className="font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-2xl mb-8 md:mb-16"
             style={{ fontSize: "clamp(2.2rem,4.2vw,4.5rem)" }}
           >
             {section.titleBefore}{" "}

@@ -59,13 +59,20 @@ export function HeroMotionBanner({ dict }: Props) {
         <BackgroundVideo src="/videos/hero-glass.mp4" />
       </motion.div>
 
-      {/* Mobile: strong uniform overlay so video stays decorative, not competing */}
+      {/* Mobile overlay: warm-white from left → transparent right, cream fades top/bottom
+          Keeps text readable while letting the video breathe on the right side */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none sm:hidden"
-        style={{ background: "rgba(247,245,240,0.91)" }}
+        style={{
+          background: [
+            "linear-gradient(to right, rgba(247,245,240,0.97) 0%, rgba(247,245,240,0.90) 48%, rgba(247,245,240,0.70) 100%)",
+            "linear-gradient(to bottom, rgba(247,245,240,0.35) 0%, transparent 16%, transparent 80%, rgba(247,245,240,0.45) 100%)",
+          ].join(", "),
+        }}
       />
-      {/* Desktop: directional gradient lets video breathe on the right */}
+
+      {/* Desktop overlay: directional left→right gradient, unchanged */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none hidden sm:block"
@@ -85,44 +92,44 @@ export function HeroMotionBanner({ dict }: Props) {
       />
 
       <div className="relative flex flex-col min-h-svh">
-        {/* Spacer for floating nav — shorter on mobile */}
+        {/* Spacer below floating nav */}
         <div className="h-20 sm:h-28 shrink-0" />
 
-        <div className="flex-1 flex items-center mx-auto w-full max-w-[1280px] px-4 sm:px-8 pb-10 sm:pb-16">
+        <div className="flex-1 flex items-center mx-auto w-full max-w-[1280px] px-5 sm:px-8 pb-8 sm:pb-16">
           <motion.div style={{ y: textY }} className="w-full sm:max-w-2xl flex flex-col">
 
             {/* Eyebrow */}
             <motion.p
               {...fadeUp(0.06)}
-              className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-ink/50 mb-4 sm:mb-6"
+              className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-ink/50 mb-5 sm:mb-6"
             >
               {dict.eyebrow}
             </motion.p>
 
-            {/* Headline — fluid scale: mobile caps at 4.6rem, desktop scales to 7rem */}
+            {/* Headline — caps at 4.6rem mobile, scales to 7rem desktop */}
             <motion.h1
               {...fadeUp(0.12)}
-              className="font-semibold leading-[0.95] tracking-[-0.04em] text-ink mb-5 sm:mb-6 [font-size:clamp(3rem,14vw,4.6rem)] sm:[font-size:clamp(3.5rem,6.5vw,7rem)]"
+              className="font-semibold leading-[0.95] tracking-[-0.04em] text-ink mb-7 sm:mb-6 [font-size:clamp(3rem,14vw,4.6rem)] sm:[font-size:clamp(3.5rem,6.5vw,7rem)]"
             >
               {dict.titleBefore}{" "}
               <em className="serif-italic not-italic">{dict.titleItalic}</em>
               {dict.titleAfter ? <> {dict.titleAfter}</> : null}
             </motion.h1>
 
-            {/* Description — shorter on mobile, full on desktop */}
+            {/* Description — shorter on mobile */}
             <motion.p
               {...fadeUp(0.26)}
-              className="text-base sm:text-lg leading-[1.65] text-ink-soft sm:max-w-md mb-6 sm:mb-8"
+              className="text-[17px] sm:text-lg leading-[1.6] text-ink-soft max-w-[34ch] sm:max-w-md mb-7 sm:mb-8"
             >
               <span className="sm:hidden">{dict.descriptionMobile}</span>
               <span className="hidden sm:inline">{dict.description}</span>
             </motion.p>
 
-            {/* CTAs — compact text on mobile */}
-            <motion.div {...fadeUp(0.36)} className="flex flex-wrap gap-2 sm:gap-3 mb-5 sm:mb-8">
+            {/* CTAs */}
+            <motion.div {...fadeUp(0.36)} className="flex flex-col sm:flex-row gap-3 sm:gap-3 mb-7 sm:mb-8">
               <ButtonLink
                 href={dict.primaryCta.href}
-                className="text-xs sm:text-sm"
+                className="justify-center sm:justify-start text-sm min-h-[48px] sm:min-h-[44px]"
               >
                 {dict.primaryCta.label}
               </ButtonLink>
@@ -131,20 +138,20 @@ export function HeroMotionBanner({ dict }: Props) {
                 variant="secondary"
                 icon="download"
                 download
-                className="text-xs sm:text-sm"
+                className="justify-center sm:justify-start text-xs sm:text-sm min-h-[44px] px-5 sm:px-6"
               >
                 {dict.secondaryCta.label}
               </ButtonLink>
             </motion.div>
 
             {/* Tags — 3 visible on mobile, all 4 on desktop */}
-            <motion.div {...fadeUp(0.44)} className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
+            <motion.div {...fadeUp(0.44)} className="flex flex-wrap gap-2 mb-7 sm:mb-5">
               {dict.tags.map((tag, i) => (
                 <Pill
                   key={tag}
                   variant="light"
                   className={cn(
-                    "text-xs px-3 py-1 sm:px-4 sm:py-1.5 sm:text-sm",
+                    "text-[13px] sm:text-sm px-3 py-1 sm:px-4 sm:py-1.5",
                     i >= 3 && "hidden sm:inline-flex"
                   )}
                 >
@@ -154,7 +161,7 @@ export function HeroMotionBanner({ dict }: Props) {
             </motion.div>
 
             {/* Location note */}
-            <motion.p {...fadeUp(0.50)} className="text-xs sm:text-sm text-ink-soft">
+            <motion.p {...fadeUp(0.50)} className="text-[15px] sm:text-sm text-ink-soft">
               {dict.note}
             </motion.p>
           </motion.div>
