@@ -17,6 +17,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://her-ai-studio.netlify.app"),
   robots: { index: true, follow: true },
 };
 

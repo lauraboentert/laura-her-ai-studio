@@ -7,7 +7,7 @@ export const siteConfig = {
   linkedin: "https://www.linkedin.com/in/laura-b%C3%B6ntert-75462545/",
   substack: "https://substack.com/@laurabntert",
   cvPath: "/laura-boentert-cv.pdf",
-  url: "https://TODO-DOMAIN.com",
+  url: "https://her-ai-studio.netlify.app",
   title:
     "Laura Böntert | Her AI Studio — AI Digital Marketing, Automation & Commerce",
   description:

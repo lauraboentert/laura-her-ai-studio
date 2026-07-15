@@ -4,6 +4,7 @@ import { locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/getDictionary";
 import { FloatingNav } from "@/components/layout/FloatingNav";
 import { Footer } from "@/components/layout/Footer";
+import { siteConfig } from "@/data/site-content";
 
 type Props = {
   children: React.ReactNode;
@@ -18,16 +19,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : "de";
   const dict = getDictionary(validLocale);
+  const pageUrl = `${siteConfig.url}/${validLocale}`;
 
   return {
     title: dict.meta.title,
     description: dict.meta.description,
+    alternates: {
+      canonical: pageUrl,
+      languages: {
+        de: `${siteConfig.url}/de`,
+        en: `${siteConfig.url}/en`,
+        "x-default": `${siteConfig.url}/de`,
+      },
+    },
     openGraph: {
       title: dict.meta.ogTitle,
       description: dict.meta.ogDescription,
       siteName: "Laura Böntert | Her AI Studio",
       locale: validLocale === "de" ? "de_DE" : "en_GB",
       type: "website",
+      url: pageUrl,
     },
     twitter: {
       card: "summary_large_image",
@@ -49,7 +60,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         "@type": "Person",
         name: "Laura Böntert",
         jobTitle: "AI Digital Marketing & Commerce Consultant",
-        url: "https://TODO-DOMAIN.com",
+        url: siteConfig.url,
         sameAs: ["https://www.linkedin.com/in/laura-b%C3%B6ntert-75462545/"],
         address: {
           "@type": "PostalAddress",
@@ -62,7 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         name: "Her AI Studio",
         description:
           "Practical AI systems for digital marketing, workflow automation and commerce — built by Laura Böntert.",
-        url: "https://TODO-DOMAIN.com",
+        url: siteConfig.url,
         founder: { "@type": "Person", name: "Laura Böntert" },
         areaServed: "Worldwide",
         serviceType: ["AI Digital Marketing", "Workflow Automation", "AI Commerce"],
