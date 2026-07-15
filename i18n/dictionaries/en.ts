@@ -136,6 +136,8 @@ const en: SiteDict = {
       period: "2025 — today",
       description:
         "Leading nine Key Account Managers across three verticals, with P&L ownership, revenue forecasting, partner negotiations and cross-functional commercial execution.",
+      descriptionMobile:
+        "Leading nine Key Account Managers across three verticals with P&L ownership, revenue forecasting and partner management.",
     },
     {
       company: "Her AI Studio Club",
@@ -143,6 +145,8 @@ const en: SiteDict = {
       period: "Ongoing",
       description:
         "Building a practitioner community for hands-on AI testing, workflow building and shared reviews of real-world outputs.",
+      descriptionMobile:
+        "Building a practitioner community for hands-on AI testing, workflow building and shared output reviews.",
     },
     {
       company: "BRIDECYCLE",
@@ -150,6 +154,8 @@ const en: SiteDict = {
       period: "2021 — ongoing wind-down",
       description:
         "Built a digital marketplace and premium pop-up retail concept for bridal fashion, generated six-figure annual revenue and led a ten-person cross-functional team.",
+      descriptionMobile:
+        "Digital marketplace and premium pop-up retail for bridal fashion — six-figure revenue, ten-person team.",
     },
     {
       company: "Trust in Digital",
@@ -157,6 +163,8 @@ const en: SiteDict = {
       period: "2018 — 2023 · Exited",
       description:
         "Founded and scaled a Shopify and WooCommerce development agency delivering more than 20 websites and online shops per year. Sold the business in 2023.",
+      descriptionMobile:
+        "Shopify and WooCommerce agency delivering 20+ projects per year. Sold the business in 2023.",
     },
     {
       company: "Ralph Lauren",
@@ -164,6 +172,8 @@ const en: SiteDict = {
       period: "2016 — 2021",
       description:
         "Worked across European wholesale e-commerce and APAC direct-to-consumer growth, including the launch of RalphLauren.jp in Japan.",
+      descriptionMobile:
+        "E-commerce and DTC growth for Europe and APAC, including the launch of RalphLauren.jp.",
     },
     {
       company: "White Communications",
@@ -171,6 +181,8 @@ const en: SiteDict = {
       period: "2014 — 2015",
       description:
         "Managed digital accounts for international fashion and luxury brands and was named Employee of the Year in 2015.",
+      descriptionMobile:
+        "Digital accounts for international fashion and luxury brands. Employee of the Year 2015.",
     },
   ],
   founderDna: {

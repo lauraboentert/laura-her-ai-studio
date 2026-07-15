@@ -62,6 +62,7 @@ export type SiteDict = {
     role: string;
     period: string;
     description: string;
+    descriptionMobile?: string;
   }[];
   founderDna: {
     label: string;

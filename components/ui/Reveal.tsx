@@ -11,9 +11,9 @@ interface RevealProps {
   y?: number;
 }
 
-export function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) {
+export function Reveal({ children, className, delay = 0, y = 20 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, amount: 0.15 });
   const reduced = useReducedMotion();
 
   return (
@@ -22,7 +22,7 @@ export function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) 
       className={className}
       initial={{ opacity: 0, y: reduced ? 0 : y }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay, ease: "easeOut" }}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>

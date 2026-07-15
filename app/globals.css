@@ -152,9 +152,9 @@ body {
   margin-top: -52px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .section-overlap {
-    margin-top: -12px;
+    margin-top: 0;
   }
 }
 
@@ -254,14 +254,38 @@ section[id] {
 /* Mobile section headings — overrides per-component inline font-size */
 @media (max-width: 639px) {
   .h2-section {
-    font-size: clamp(2.6rem, 11vw, 4rem) !important;
-    line-height: 0.96 !important;
-    letter-spacing: -0.045em !important;
+    font-size: clamp(2.4rem, 10vw, 3.6rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.04em !important;
   }
   .body-lg {
-    font-size: 1.125rem !important;
-    line-height: 1.55 !important;
+    font-size: 1.0625rem !important;
+    line-height: 1.6 !important;
   }
+}
+
+/* Mobile timeline — CSS-driven line + dots */
+.mobile-timeline {
+  position: relative;
+  padding-left: 32px;
+}
+.mobile-timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--ink);
+}
+.mobile-timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

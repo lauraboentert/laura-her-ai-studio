@@ -136,6 +136,8 @@ const de: SiteDict = {
       period: "2025 — heute",
       description:
         "Führung von neun Key Account Managern in drei Verticals, mit P&L-Verantwortung, Umsatzplanung, Partnerverhandlungen und crossfunktionaler kommerzieller Ausführung.",
+      descriptionMobile:
+        "Führung von neun Key Account Managern über drei Verticals mit P&L-Verantwortung, Umsatzplanung und Partnersteuerung.",
     },
     {
       company: "Her AI Studio Club",
@@ -143,6 +145,8 @@ const de: SiteDict = {
       period: "Laufend",
       description:
         "Aufbau einer Practitioner-Community für praxisnahes AI-Testen, Workflow-Entwicklung und gemeinsame Reviews realer Outputs.",
+      descriptionMobile:
+        "Aufbau einer Practitioner-Community für AI-Testing, Workflow-Entwicklung und gemeinsame Output-Reviews.",
     },
     {
       company: "BRIDECYCLE",
@@ -150,6 +154,8 @@ const de: SiteDict = {
       period: "2021 — laufender Wind-down",
       description:
         "Aufbau eines digitalen Marktplatzes und eines Premium-Pop-up-Retail-Konzepts für Brautmode mit sechsstelligem Jahresumsatz und einem zehnköpfigen crossfunktionalen Team.",
+      descriptionMobile:
+        "Digitaler Marktplatz und Premium-Pop-up-Retail für Brautmode — sechsstelliger Umsatz, zehnköpfiges Team.",
     },
     {
       company: "Trust in Digital",
@@ -157,6 +163,8 @@ const de: SiteDict = {
       period: "2018 — 2023 · Verkauft",
       description:
         "Gründung und Skalierung einer Shopify- und WooCommerce-Entwicklungsagentur mit mehr als 20 Websites und Online-Shops pro Jahr. Verkauf des Unternehmens 2023.",
+      descriptionMobile:
+        "Shopify- und WooCommerce-Agentur mit 20+ Projekten pro Jahr. Verkauf des Unternehmens 2023.",
     },
     {
       company: "Ralph Lauren",
@@ -164,6 +172,8 @@ const de: SiteDict = {
       period: "2016 — 2021",
       description:
         "Arbeit im europäischen Wholesale-E-Commerce und DTC-Wachstum in APAC, einschließlich des Launches von RalphLauren.jp in Japan.",
+      descriptionMobile:
+        "E-Commerce und DTC-Wachstum für Europa und APAC, inkl. Launch von RalphLauren.jp.",
     },
     {
       company: "White Communications",
@@ -171,6 +181,8 @@ const de: SiteDict = {
       period: "2014 — 2015",
       description:
         "Betreuung digitaler Accounts für internationale Mode- und Luxusmarken. Mitarbeiterin des Jahres 2015.",
+      descriptionMobile:
+        "Digitale Accounts für internationale Mode- und Luxusmarken. Mitarbeiterin des Jahres 2015.",
     },
   ],
   founderDna: {

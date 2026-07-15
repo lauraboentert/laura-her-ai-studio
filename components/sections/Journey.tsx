@@ -20,7 +20,7 @@ export function Journey({ entries, section }: Props) {
         </Reveal>
         <Reveal delay={0.1}>
           <h2
-            className="h2-section font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-2xl mb-8 md:mb-16"
+            className="h2-section font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-2xl mb-10 md:mb-16"
             style={{ fontSize: "clamp(2.2rem,4.2vw,4.5rem)" }}
           >
             {section.titleBefore}{" "}
@@ -29,28 +29,48 @@ export function Journey({ entries, section }: Props) {
           </h2>
         </Reveal>
 
-        <div className="relative">
-          {/* Desktop: solid continuous line */}
+        {/* ── Mobile timeline ── */}
+        <div className="md:hidden mobile-timeline mb-12">
+          <ol>
+            {entries.map((entry, i) => (
+              <li
+                key={entry.company}
+                className="relative"
+                style={{ paddingBottom: i < entries.length - 1 ? "44px" : 0 }}
+              >
+                <div className="mobile-timeline-dot" aria-hidden="true" />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-ink/50 mb-2 pt-0.5">
+                  {entry.period}
+                </p>
+                <h3 className="text-[1.05rem] font-semibold text-ink leading-snug mb-0.5">
+                  {entry.company}
+                </h3>
+                <p className="text-sm font-medium text-ink-soft mb-2">
+                  {entry.role}
+                </p>
+                <p className="text-[0.9375rem] leading-[1.6] text-ink-soft max-w-[34ch]">
+                  {entry.descriptionMobile ?? entry.description}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* ── Desktop timeline ── */}
+        <div className="hidden md:block relative">
           <div
             aria-hidden="true"
-            className="absolute left-0 top-2 hidden md:block w-px bg-ink"
-            style={{ height: "calc(100% - 48px)" }}
-          />
-          {/* Mobile: subtle left line */}
-          <div
-            aria-hidden="true"
-            className="absolute left-[11px] top-2 md:hidden w-px bg-ink/20"
+            className="absolute left-0 top-2 w-px bg-ink"
             style={{ height: "calc(100% - 48px)" }}
           />
 
           <ol className="flex flex-col">
             {entries.map((entry, i) => (
               <Reveal key={entry.company} delay={i * 0.07}>
-                <li className="group relative pl-7 md:pl-12 pb-10 last:pb-0">
-                  {/* Desktop dot */}
+                <li className="group relative pl-12 pb-10 last:pb-0">
                   <motion.div
                     aria-hidden="true"
-                    className="absolute left-[-4.5px] top-[10px] hidden md:block size-[9px] rounded-full border border-ink/30 bg-canvas"
+                    className="absolute left-[-4.5px] top-[10px] size-[9px] rounded-full border border-ink/30 bg-canvas"
                     whileInView={{
                       backgroundColor: "var(--ink)",
                       borderColor: "var(--ink)",
@@ -58,26 +78,21 @@ export function Journey({ entries, section }: Props) {
                     viewport={{ once: true, margin: "-20% 0px" }}
                     transition={{ duration: 0.25, delay: 0.08 }}
                   />
-                  {/* Mobile dot */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute left-[7px] top-[11px] md:hidden size-[9px] rounded-full border border-ink/25 bg-canvas"
-                  />
 
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:gap-8 md:pl-12">
-                    <div className="shrink-0 sm:w-40 mb-1.5 sm:mb-0">
+                  <div className="flex items-start gap-8">
+                    <div className="shrink-0 w-40">
                       <p className="text-xs font-semibold text-ink-soft/70 tracking-wide">
                         {entry.period}
                       </p>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl font-semibold text-ink mb-0.5">
+                      <h3 className="text-xl font-semibold text-ink mb-0.5">
                         {entry.company}
                       </h3>
                       <p className="text-sm font-medium text-ink-soft mb-2.5">
                         {entry.role}
                       </p>
-                      <p className="body-lg text-base text-ink-soft leading-[1.65] max-w-xl">
+                      <p className="text-base text-ink-soft leading-[1.65] max-w-xl">
                         {entry.description}
                       </p>
                     </div>
@@ -89,7 +104,7 @@ export function Journey({ entries, section }: Props) {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="mt-12 md:mt-16 flex">
+          <div className="mt-10 md:mt-16 flex">
             <ButtonLink
               href="/CV_Laura-Boentert.pdf"
               variant="secondary"

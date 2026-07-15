@@ -241,17 +241,7 @@ export function Expertise({ items, section }: Props) {
           </div>
 
           {/* Mobile: stacked panels */}
-          <div className="md:hidden flex flex-col gap-6">
-            <div className="flex flex-col gap-2 mb-2">
-              {items.map((ex) => (
-                <span
-                  key={ex.slug}
-                  className="text-xs font-medium text-ink/35 uppercase tracking-[0.14em]"
-                >
-                  {ex.number} {ex.title}
-                </span>
-              ))}
-            </div>
+          <div className="md:hidden flex flex-col gap-5">
             {items.map((item) => (
               <Reveal key={item.slug}>
                 <ExpertisePanel item={item} />
