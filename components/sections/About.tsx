@@ -52,7 +52,7 @@ export function About({ dict }: Props) {
           <div>
             <Reveal delay={0.1}>
               <h2
-                className="font-semibold leading-[1.05] tracking-[-0.04em] text-ink mb-6"
+                className="h2-section font-semibold leading-[1.05] tracking-[-0.04em] text-ink mb-6"
                 style={{ fontSize: "clamp(2rem,3.8vw,4.2rem)" }}
               >
                 {dict.titleBefore}{" "}
@@ -60,7 +60,7 @@ export function About({ dict }: Props) {
               </h2>
             </Reveal>
             <Reveal delay={0.18}>
-              <p className="text-lg leading-[1.65] text-ink-soft mb-4">
+              <p className="body-lg text-lg leading-[1.65] text-ink-soft mb-4">
                 {dict.description}
               </p>
             </Reveal>

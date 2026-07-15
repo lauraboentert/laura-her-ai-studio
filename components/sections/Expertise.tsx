@@ -180,7 +180,7 @@ export function Expertise({ items, section }: Props) {
             <SectionLabel className="mb-5">{section.label}</SectionLabel>
 
             <h2
-              className="font-semibold leading-[1.06] tracking-[-0.04em] text-ink mb-10"
+              className="h2-section font-semibold leading-[1.06] tracking-[-0.04em] text-ink mb-10"
               style={{ fontSize: "clamp(2rem,3.8vw,4rem)" }}
             >
               {section.titleBefore}{" "}

@@ -19,7 +19,7 @@ export function FounderDNA({ dict }: Props) {
             </Reveal>
             <Reveal delay={0.1}>
               <h2
-                className="font-semibold leading-[1.05] tracking-[-0.04em] text-ink mb-6"
+                className="h2-section font-semibold leading-[1.05] tracking-[-0.04em] text-ink mb-6"
                 style={{ fontSize: "clamp(2.2rem,4.2vw,4.5rem)" }}
               >
                 {dict.titleBefore}{" "}
@@ -27,7 +27,7 @@ export function FounderDNA({ dict }: Props) {
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="text-lg leading-[1.7] text-ink-soft max-w-lg">
+              <p className="body-lg text-lg leading-[1.7] text-ink-soft max-w-lg">
                 {dict.description}
               </p>
             </Reveal>

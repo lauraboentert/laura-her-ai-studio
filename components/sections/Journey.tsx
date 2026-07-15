@@ -14,13 +14,13 @@ interface Props {
 export function Journey({ entries, section }: Props) {
   return (
     <section id="journey" className="section-shell theme-timeline py-16 md:py-40">
-      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <Reveal>
           <SectionLabel className="mb-5">{section.label}</SectionLabel>
         </Reveal>
         <Reveal delay={0.1}>
           <h2
-            className="font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-2xl mb-8 md:mb-16"
+            className="h2-section font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-2xl mb-8 md:mb-16"
             style={{ fontSize: "clamp(2.2rem,4.2vw,4.5rem)" }}
           >
             {section.titleBefore}{" "}
@@ -30,18 +30,24 @@ export function Journey({ entries, section }: Props) {
         </Reveal>
 
         <div className="relative">
-          {/* Single continuous solid line */}
+          {/* Desktop: solid continuous line */}
           <div
             aria-hidden="true"
             className="absolute left-0 top-2 hidden md:block w-px bg-ink"
+            style={{ height: "calc(100% - 48px)" }}
+          />
+          {/* Mobile: subtle left line */}
+          <div
+            aria-hidden="true"
+            className="absolute left-[11px] top-2 md:hidden w-px bg-ink/20"
             style={{ height: "calc(100% - 48px)" }}
           />
 
           <ol className="flex flex-col">
             {entries.map((entry, i) => (
               <Reveal key={entry.company} delay={i * 0.07}>
-                <li className="group relative md:pl-12 pb-12 last:pb-0">
-                  {/* Timeline dot — fills to ink on scroll-into-view */}
+                <li className="group relative pl-7 md:pl-12 pb-10 last:pb-0">
+                  {/* Desktop dot */}
                   <motion.div
                     aria-hidden="true"
                     className="absolute left-[-4.5px] top-[10px] hidden md:block size-[9px] rounded-full border border-ink/30 bg-canvas"
@@ -52,21 +58,26 @@ export function Journey({ entries, section }: Props) {
                     viewport={{ once: true, margin: "-20% 0px" }}
                     transition={{ duration: 0.25, delay: 0.08 }}
                   />
+                  {/* Mobile dot */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute left-[7px] top-[11px] md:hidden size-[9px] rounded-full border border-ink/25 bg-canvas"
+                  />
 
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:gap-8">
-                    <div className="shrink-0 sm:w-40 mb-2 sm:mb-0">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:gap-8 md:pl-12">
+                    <div className="shrink-0 sm:w-40 mb-1.5 sm:mb-0">
                       <p className="text-xs font-semibold text-ink-soft/70 tracking-wide">
                         {entry.period}
                       </p>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-ink mb-0.5">
+                      <h3 className="text-lg sm:text-xl font-semibold text-ink mb-0.5">
                         {entry.company}
                       </h3>
-                      <p className="text-sm font-medium text-ink-soft mb-3">
+                      <p className="text-sm font-medium text-ink-soft mb-2.5">
                         {entry.role}
                       </p>
-                      <p className="text-base text-ink-soft leading-[1.65] max-w-xl">
+                      <p className="body-lg text-base text-ink-soft leading-[1.65] max-w-xl">
                         {entry.description}
                       </p>
                     </div>
@@ -78,7 +89,7 @@ export function Journey({ entries, section }: Props) {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="mt-16 flex">
+          <div className="mt-12 md:mt-16 flex">
             <ButtonLink
               href="/CV_Laura-Boentert.pdf"
               variant="secondary"

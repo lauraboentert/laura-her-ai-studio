@@ -154,8 +154,13 @@ body {
 
 @media (max-width: 768px) {
   .section-overlap {
-    margin-top: -36px;
+    margin-top: -12px;
   }
+}
+
+/* Ensure anchored sections appear below the floating nav */
+section[id] {
+  scroll-margin-top: 80px;
 }
 
 /* SVG fractalNoise grain — ~250 bytes, no external file, opacity 0.045 */
@@ -243,6 +248,19 @@ body {
   .section-shell::after {
     opacity: 0.03;
     background-size: 200px 200px;
+  }
+}
+
+/* Mobile section headings — overrides per-component inline font-size */
+@media (max-width: 639px) {
+  .h2-section {
+    font-size: clamp(2.6rem, 11vw, 4rem) !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.045em !important;
+  }
+  .body-lg {
+    font-size: 1.125rem !important;
+    line-height: 1.55 !important;
   }
 }
 

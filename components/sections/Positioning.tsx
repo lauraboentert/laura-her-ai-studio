@@ -17,7 +17,7 @@ export function Positioning({ dict }: Props) {
 
         <Reveal delay={0.1}>
           <h2
-            className="font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-3xl mb-8"
+            className="h2-section font-semibold leading-[1.05] tracking-[-0.04em] text-ink max-w-3xl mb-8"
             style={{ fontSize: "clamp(2.2rem,4.2vw,4.5rem)" }}
           >
             {dict.titleBefore}{" "}
@@ -27,7 +27,7 @@ export function Positioning({ dict }: Props) {
         </Reveal>
 
         <Reveal delay={0.18}>
-          <p className="max-w-2xl text-lg leading-[1.65] text-ink-soft mb-16">
+          <p className="body-lg max-w-2xl text-lg leading-[1.65] text-ink-soft mb-16">
             {dict.description}
           </p>
         </Reveal>

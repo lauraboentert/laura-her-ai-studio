@@ -29,7 +29,7 @@ export function Contact({ dict }: Props) {
 
         <Reveal delay={0.1}>
           <h2
-            className="font-semibold leading-[0.97] tracking-[-0.04em] text-ink mb-8 max-w-4xl mx-auto"
+            className="h2-section font-semibold leading-[0.97] tracking-[-0.04em] text-ink mb-8 max-w-4xl mx-auto"
             style={{ fontSize: "clamp(2.8rem,6vw,7rem)" }}
           >
             {dict.titleBefore}{" "}
@@ -39,7 +39,7 @@ export function Contact({ dict }: Props) {
         </Reveal>
 
         <Reveal delay={0.18}>
-          <p className="text-xl text-ink-soft max-w-lg mx-auto mb-12 leading-[1.6]">
+          <p className="body-lg text-lg sm:text-xl text-ink-soft max-w-lg mx-auto mb-8 sm:mb-12 leading-[1.55] sm:leading-[1.6]">
             {dict.description}
           </p>
         </Reveal>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -24,13 +24,25 @@ export function FloatingNav({
   menuLabel,
 }: Props) {
   const [scrolled, setScrolled] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      // Auto-hide only on mobile (below md = 768px), never while menu is open
+      if (window.innerWidth < 768 && !menuOpen) {
+        setNavHidden(y > lastScrollY.current && y > 80);
+      } else {
+        setNavHidden(false);
+      }
+      lastScrollY.current = y;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [menuOpen]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -41,7 +53,13 @@ export function FloatingNav({
 
   return (
     <>
-      <header className="fixed top-3 sm:top-5 left-1/2 z-50 w-[calc(100%-32px)] max-w-5xl -translate-x-1/2 transition-all duration-300">
+      <header
+        className={cn(
+          "fixed left-1/2 z-50 w-[calc(100%-32px)] max-w-5xl -translate-x-1/2 transition-all duration-300",
+          "top-[max(12px,env(safe-area-inset-top))] sm:top-5",
+          navHidden ? "-translate-y-[130%] opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+        )}
+      >
         <nav
           className={cn(
             "flex items-center justify-between rounded-full px-4 sm:px-5 py-2 sm:py-3 transition-all duration-300",
@@ -85,7 +103,7 @@ export function FloatingNav({
             </a>
             <button
               className="md:hidden flex size-11 items-center justify-center rounded-full hover:bg-black/5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-              onClick={() => setMenuOpen(true)}
+              onClick={() => { setMenuOpen(true); setNavHidden(false); }}
               aria-label={openMenuLabel}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
