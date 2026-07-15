@@ -10,6 +10,7 @@ import {
 } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import type { SiteDict } from "@/i18n/config";
+import { cn } from "@/lib/cn";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Pill } from "@/components/ui/Pill";
 import { BackgroundVideo } from "@/components/ui/BackgroundVideo";
@@ -49,6 +50,7 @@ export function HeroMotionBanner({ dict }: Props) {
       className="relative min-h-svh overflow-hidden"
       aria-label="Introduction"
     >
+      {/* Video layer */}
       <motion.div
         aria-hidden="true"
         className="absolute inset-0 will-change-transform"
@@ -57,15 +59,23 @@ export function HeroMotionBanner({ dict }: Props) {
         <BackgroundVideo src="/videos/hero-glass.mp4" />
       </motion.div>
 
+      {/* Mobile: strong uniform overlay so video stays decorative, not competing */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none sm:hidden"
+        style={{ background: "rgba(247,245,240,0.91)" }}
+      />
+      {/* Desktop: directional gradient lets video breathe on the right */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none hidden sm:block"
         style={{
           background:
             "linear-gradient(105deg, rgba(247,245,240,0.96) 0%, rgba(247,245,240,0.86) 28%, rgba(247,245,240,0.45) 58%, rgba(247,245,240,0.06) 100%)",
         }}
       />
 
+      {/* Bottom fade into next section */}
       <div
         aria-hidden="true"
         className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
@@ -75,36 +85,45 @@ export function HeroMotionBanner({ dict }: Props) {
       />
 
       <div className="relative flex flex-col min-h-svh">
-        <div className="h-28 shrink-0" />
+        {/* Spacer for floating nav — shorter on mobile */}
+        <div className="h-20 sm:h-28 shrink-0" />
 
-        <div className="flex-1 flex items-center mx-auto w-full max-w-[1280px] px-4 sm:px-8 pb-16">
-          <motion.div style={{ y: textY }} className="w-full max-w-2xl flex flex-col">
+        <div className="flex-1 flex items-center mx-auto w-full max-w-[1280px] px-4 sm:px-8 pb-10 sm:pb-16">
+          <motion.div style={{ y: textY }} className="w-full sm:max-w-2xl flex flex-col">
+
+            {/* Eyebrow */}
             <motion.p
               {...fadeUp(0.06)}
-              className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/50 mb-6"
+              className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-ink/50 mb-4 sm:mb-6"
             >
               {dict.eyebrow}
             </motion.p>
 
+            {/* Headline — fluid scale: mobile caps at 4.6rem, desktop scales to 7rem */}
             <motion.h1
               {...fadeUp(0.12)}
-              className="font-semibold leading-[0.95] tracking-[-0.04em] text-ink mb-6"
-              style={{ fontSize: "clamp(2.8rem,6.5vw,7rem)" }}
+              className="font-semibold leading-[0.95] tracking-[-0.04em] text-ink mb-5 sm:mb-6 [font-size:clamp(3rem,14vw,4.6rem)] sm:[font-size:clamp(3.5rem,6.5vw,7rem)]"
             >
               {dict.titleBefore}{" "}
-              <em className="serif-italic not-italic">{dict.titleItalic}</em>{" "}
-              {dict.titleAfter}
+              <em className="serif-italic not-italic">{dict.titleItalic}</em>
+              {dict.titleAfter ? <> {dict.titleAfter}</> : null}
             </motion.h1>
 
+            {/* Description — shorter on mobile, full on desktop */}
             <motion.p
               {...fadeUp(0.26)}
-              className="text-lg leading-[1.65] text-ink-soft max-w-md mb-8"
+              className="text-base sm:text-lg leading-[1.65] text-ink-soft sm:max-w-md mb-6 sm:mb-8"
             >
-              {dict.description}
+              <span className="sm:hidden">{dict.descriptionMobile}</span>
+              <span className="hidden sm:inline">{dict.description}</span>
             </motion.p>
 
-            <motion.div {...fadeUp(0.36)} className="flex flex-wrap gap-3 mb-8">
-              <ButtonLink href={dict.primaryCta.href}>
+            {/* CTAs — compact text on mobile */}
+            <motion.div {...fadeUp(0.36)} className="flex flex-wrap gap-2 sm:gap-3 mb-5 sm:mb-8">
+              <ButtonLink
+                href={dict.primaryCta.href}
+                className="text-xs sm:text-sm"
+              >
                 {dict.primaryCta.label}
               </ButtonLink>
               <ButtonLink
@@ -112,25 +131,36 @@ export function HeroMotionBanner({ dict }: Props) {
                 variant="secondary"
                 icon="download"
                 download
+                className="text-xs sm:text-sm"
               >
                 {dict.secondaryCta.label}
               </ButtonLink>
             </motion.div>
 
-            <motion.div {...fadeUp(0.44)} className="flex flex-wrap gap-2 mb-5">
-              {dict.tags.map((tag) => (
-                <Pill key={tag} variant="light">
+            {/* Tags — 3 visible on mobile, all 4 on desktop */}
+            <motion.div {...fadeUp(0.44)} className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
+              {dict.tags.map((tag, i) => (
+                <Pill
+                  key={tag}
+                  variant="light"
+                  className={cn(
+                    "text-xs px-3 py-1 sm:px-4 sm:py-1.5 sm:text-sm",
+                    i >= 3 && "hidden sm:inline-flex"
+                  )}
+                >
                   {tag}
                 </Pill>
               ))}
             </motion.div>
 
-            <motion.p {...fadeUp(0.50)} className="text-sm text-ink-soft">
+            {/* Location note */}
+            <motion.p {...fadeUp(0.50)} className="text-xs sm:text-sm text-ink-soft">
               {dict.note}
             </motion.p>
           </motion.div>
         </div>
 
+        {/* Scroll cue */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

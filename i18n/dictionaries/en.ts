@@ -20,6 +20,8 @@ const en: SiteDict = {
     titleAfter: "execution.",
     description:
       "I build AI-powered digital marketing, automation and commerce systems — combining founder speed, enterprise execution and more than a decade of digital growth experience.",
+    descriptionMobile:
+      '„I build AI-powered systems for digital marketing, automation and commerce — efficient, scalable and practical.“',
     primaryCta: { label: "Explore my expertise", href: "#expertise" },
     secondaryCta: { label: "Download CV", href: "/CV_Laura-Boentert.pdf" },
     tags: ["AI Digital Marketing", "Workflow Automation", "AI Commerce", "GTM & Leadership"],

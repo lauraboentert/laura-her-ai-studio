@@ -16,6 +16,7 @@ export type SiteDict = {
     titleItalic: string;
     titleAfter: string;
     description: string;
+    descriptionMobile: string;
     primaryCta: { label: string; href: string };
     secondaryCta: { label: string; href: string };
     tags: readonly string[];
