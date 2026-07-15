@@ -158,9 +158,25 @@ body {
   }
 }
 
+/* Centralized nav offset — nav height (~60px) + top margin (12px) + buffer */
+:root {
+  --nav-offset: 84px;
+  --mobile-gutter: 22px;
+}
+
 /* Ensure anchored sections appear below the floating nav */
 section[id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: var(--nav-offset);
+}
+
+/* On desktop, reset mobile-timeline so the CSS line/dot don't render */
+@media (min-width: 768px) {
+  .mobile-timeline {
+    padding-left: 0;
+  }
+  .mobile-timeline::before {
+    display: none;
+  }
 }
 
 /* SVG fractalNoise grain — ~250 bytes, no external file, opacity 0.045 */

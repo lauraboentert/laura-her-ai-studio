@@ -29,48 +29,33 @@ export function Journey({ entries, section }: Props) {
           </h2>
         </Reveal>
 
-        {/* ── Mobile timeline ── */}
-        <div className="md:hidden mobile-timeline mb-12">
-          <ol>
-            {entries.map((entry, i) => (
-              <li
-                key={entry.company}
-                className="relative"
-                style={{ paddingBottom: i < entries.length - 1 ? "44px" : 0 }}
-              >
-                <div className="mobile-timeline-dot" aria-hidden="true" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-ink/50 mb-2 pt-0.5">
-                  {entry.period}
-                </p>
-                <h3 className="text-[1.05rem] font-semibold text-ink leading-snug mb-0.5">
-                  {entry.company}
-                </h3>
-                <p className="text-sm font-medium text-ink-soft mb-2">
-                  {entry.role}
-                </p>
-                <p className="text-[0.9375rem] leading-[1.6] text-ink-soft max-w-[34ch]">
-                  {entry.descriptionMobile ?? entry.description}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        {/* ── Desktop timeline ── */}
-        <div className="hidden md:block relative">
+        {/* Single unified timeline — responsive layout, no duplicate DOM */}
+        <div className="relative">
+          {/* Desktop vertical line (hidden on mobile via md: prefix) */}
           <div
             aria-hidden="true"
-            className="absolute left-0 top-2 w-px bg-ink"
+            className="hidden md:block absolute left-0 top-2 w-px bg-ink"
             style={{ height: "calc(100% - 48px)" }}
           />
 
-          <ol className="flex flex-col">
+          {/* Mobile CSS line comes from .mobile-timeline::before in globals.css */}
+          <ol className="mobile-timeline flex flex-col md:pl-0">
             {entries.map((entry, i) => (
-              <Reveal key={entry.company} delay={i * 0.07}>
-                <li className="group relative pl-12 pb-10 last:pb-0">
+              <Reveal key={entry.company} delay={i * 0.06}>
+                <li
+                  className="relative md:pl-12"
+                  style={{ paddingBottom: i < entries.length - 1 ? "44px" : 0 }}
+                >
+                  {/* Mobile dot — hidden on desktop via md:hidden */}
+                  <div
+                    aria-hidden="true"
+                    className="mobile-timeline-dot md:hidden"
+                  />
+
+                  {/* Desktop animated dot — hidden on mobile */}
                   <motion.div
                     aria-hidden="true"
-                    className="absolute left-[-4.5px] top-[10px] size-[9px] rounded-full border border-ink/30 bg-canvas"
+                    className="absolute hidden md:block left-[-4.5px] top-[10px] size-[9px] rounded-full border border-ink/30 bg-canvas"
                     whileInView={{
                       backgroundColor: "var(--ink)",
                       borderColor: "var(--ink)",
@@ -79,20 +64,29 @@ export function Journey({ entries, section }: Props) {
                     transition={{ duration: 0.25, delay: 0.08 }}
                   />
 
-                  <div className="flex items-start gap-8">
-                    <div className="shrink-0 w-40">
-                      <p className="text-xs font-semibold text-ink-soft/70 tracking-wide">
+                  {/* Responsive content layout */}
+                  <div className="flex flex-col md:flex-row md:items-start md:gap-8">
+                    {/* Date / period */}
+                    <div className="md:shrink-0 md:w-40 mb-1.5 md:mb-0">
+                      <p className="text-[11px] md:text-xs font-semibold uppercase md:normal-case tracking-[0.13em] md:tracking-wide text-ink/50 md:text-ink-soft/70 pt-0.5 md:pt-0">
                         {entry.period}
                       </p>
                     </div>
+
+                    {/* Company / role / description */}
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-ink mb-0.5">
+                      <h3 className="text-[1.05rem] md:text-xl font-semibold text-ink leading-snug mb-0.5">
                         {entry.company}
                       </h3>
-                      <p className="text-sm font-medium text-ink-soft mb-2.5">
+                      <p className="text-sm font-medium text-ink-soft mb-2 md:mb-2.5">
                         {entry.role}
                       </p>
-                      <p className="text-base text-ink-soft leading-[1.65] max-w-xl">
+                      {/* Mobile description (shorter) */}
+                      <p className="md:hidden text-[0.9375rem] leading-[1.6] text-ink-soft max-w-[34ch]">
+                        {entry.descriptionMobile ?? entry.description}
+                      </p>
+                      {/* Desktop description (full) */}
+                      <p className="hidden md:block text-base text-ink-soft leading-[1.65] max-w-xl">
                         {entry.description}
                       </p>
                     </div>
