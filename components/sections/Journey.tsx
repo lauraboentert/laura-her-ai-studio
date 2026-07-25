@@ -29,30 +29,32 @@ export function Journey({ entries, section }: Props) {
           </h2>
         </Reveal>
 
-        {/* Single unified timeline — responsive layout, no duplicate DOM */}
         <div className="relative">
-          {/* Desktop vertical line (hidden on mobile via md: prefix) */}
+          {/* Desktop vertical line */}
           <div
             aria-hidden="true"
             className="hidden md:block absolute left-0 top-2 w-px bg-ink"
             style={{ height: "calc(100% - 48px)" }}
           />
 
-          {/* Mobile CSS line comes from .mobile-timeline::before in globals.css */}
-          <ol className="mobile-timeline flex flex-col md:pl-0">
+          <ol className="flex flex-col">
             {entries.map((entry, i) => (
               <Reveal key={entry.company} delay={i * 0.06}>
                 <li
-                  className="relative md:pl-12"
-                  style={{ paddingBottom: i < entries.length - 1 ? "44px" : 0 }}
+                  className={`flex md:block md:relative md:pl-12${i < entries.length - 1 ? " md:pb-[44px]" : ""}`}
                 >
-                  {/* Mobile dot — hidden on desktop via md:hidden */}
+                  {/* Mobile rail: dot + connecting line in a dedicated left column */}
                   <div
                     aria-hidden="true"
-                    className="mobile-timeline-dot md:hidden"
-                  />
+                    className="flex flex-col items-center w-7 flex-shrink-0 mr-4 md:hidden"
+                  >
+                    <div className="w-3 h-3 rounded-full bg-ink mt-[5px] flex-shrink-0 relative z-10" />
+                    {i < entries.length - 1 && (
+                      <div className="w-px flex-1 bg-ink mt-[5px]" />
+                    )}
+                  </div>
 
-                  {/* Desktop animated dot — hidden on mobile */}
+                  {/* Desktop animated dot */}
                   <motion.div
                     aria-hidden="true"
                     className="absolute hidden md:block left-[-4.5px] top-[10px] size-[9px] rounded-full border border-ink/30 bg-canvas"
@@ -64,8 +66,10 @@ export function Journey({ entries, section }: Props) {
                     transition={{ duration: 0.25, delay: 0.08 }}
                   />
 
-                  {/* Responsive content layout */}
-                  <div className="flex flex-col md:flex-row md:items-start md:gap-8">
+                  {/* Content column — fully right of the rail on mobile */}
+                  <div
+                    className={`min-w-0 flex-1 flex flex-col md:flex-row md:items-start md:gap-8${i < entries.length - 1 ? " pb-[44px] md:pb-0" : ""}`}
+                  >
                     {/* Date / period */}
                     <div className="md:shrink-0 md:w-40 mb-1.5 md:mb-0">
                       <p className="text-[11px] md:text-xs font-semibold uppercase md:normal-case tracking-[0.13em] md:tracking-wide text-ink/50 md:text-ink-soft/70 pt-0.5 md:pt-0">
@@ -74,7 +78,7 @@ export function Journey({ entries, section }: Props) {
                     </div>
 
                     {/* Company / role / description */}
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <h3 className="text-[1.05rem] md:text-xl font-semibold text-ink leading-snug mb-0.5">
                         {entry.company}
                       </h3>
@@ -82,7 +86,7 @@ export function Journey({ entries, section }: Props) {
                         {entry.role}
                       </p>
                       {/* Mobile description (shorter) */}
-                      <p className="md:hidden text-[0.9375rem] leading-[1.6] text-ink-soft max-w-[34ch]">
+                      <p className="md:hidden text-[0.9375rem] leading-[1.6] text-ink-soft">
                         {entry.descriptionMobile ?? entry.description}
                       </p>
                       {/* Desktop description (full) */}

@@ -169,15 +169,6 @@ section[id] {
   scroll-margin-top: var(--nav-offset);
 }
 
-/* On desktop, reset mobile-timeline so the CSS line/dot don't render */
-@media (min-width: 768px) {
-  .mobile-timeline {
-    padding-left: 0;
-  }
-  .mobile-timeline::before {
-    display: none;
-  }
-}
 
 /* SVG fractalNoise grain — ~250 bytes, no external file, opacity 0.045 */
 .section-shell::after {
@@ -280,29 +271,6 @@ section[id] {
   }
 }
 
-/* Mobile timeline — CSS-driven line + dots */
-.mobile-timeline {
-  position: relative;
-  padding-left: 32px;
-}
-.mobile-timeline::before {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 4px;
-  bottom: 4px;
-  width: 2px;
-  background: var(--ink);
-}
-.mobile-timeline-dot {
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  background: var(--ink);
-}
 
 @media (prefers-reduced-motion: reduce) {
   *,
