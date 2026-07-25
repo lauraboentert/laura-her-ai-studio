@@ -10,7 +10,7 @@ interface Props {
 
 export function About({ dict }: Props) {
   return (
-    <SectionShell id="about" theme="soft-about" className="py-16 md:py-40">
+    <SectionShell id="about" theme="soft-about" className="py-16 md:py-40 overflow-hidden">
       <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
